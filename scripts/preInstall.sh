@@ -9,7 +9,7 @@ cat << EOT > ./matrix/federation.json
 { "m.server": "${DOMAIN}:443" }
 EOT
 
-cat << 'EOF' > ./element-config.json
+cat << 'EOT' > ./element-config.json
 {
     "default_server_config": {
         "m.homeserver": {
@@ -83,7 +83,7 @@ cat << 'EOF' > ./element-config.json
     },
     "map_style_url": "https://api.maptiler.com/maps/streets/style.json?key=fU3vlMsMn4Jb6dnEIFsx"
 }
-EOF
+EOT
 
 
 sleep 30;
