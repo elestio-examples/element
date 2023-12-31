@@ -104,7 +104,7 @@ echo $form_secret
 cat /dev/null > ./synapse/homeserver.yaml
 
 
-cat << EOT > /opt/app/synapse/homeserver.yaml
+cat << EOT > ./synapse/homeserver.yaml
 modules:
 server_name: "${DOMAIN}"
 pid_file: /data/homeserver.pid
