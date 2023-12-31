@@ -9,7 +9,7 @@ cat << EOT > ./matrix/federation.json
 { "m.server": "${DOMAIN}:443" }
 EOT
 
-cat << 'EOT' > ./element-config.json
+cat << EOT > ./element-config.json
 {
     "default_server_config": {
         "m.homeserver": {
