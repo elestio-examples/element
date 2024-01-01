@@ -15,3 +15,9 @@ You can open Element UI here:
     URL: https://[CI_CD_DOMAIN]
     login: admin
     password: [ADMIN_PASSWORD]
+
+You can open pgAdmin here:
+
+    URL: https://[CI_CD_DOMAIN]:33374
+    login: [ADMIN_EMAIL]
+    password: [ADMIN_PASSWORD]
