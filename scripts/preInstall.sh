@@ -20,6 +20,8 @@ EOT
 
 
 mkdir -p ./matrix
+mkdir -p ./synapse
+chown -R 991:991 ./synapse
 
 echo 'vm.overcommit_memory = 1' >> /etc/sysctl.conf && sysctl -p
 
