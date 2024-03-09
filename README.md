@@ -44,6 +44,8 @@ Step4: Run the subsequent command to generate necessary configurations, substitu
 
     mv ./postgresdata ./postgresdata_old;
     mv ./synapse ./synapse_old;
+    mkdir -p ./synapse
+    chown -R 991:991 ./synapse
     docker run --rm -v "/opt/app/synapse:/data" -e SYNAPSE_SERVER_NAME=YOUR_CUSTOM_DOMAIN -e SYNAPSE_REPORT_STATS=yes matrixdotorg/synapse:latest generate
 
 Step5: Finalize the process by bringing the Docker Compose back up:
