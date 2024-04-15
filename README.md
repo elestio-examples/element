@@ -24,7 +24,7 @@ You can open pgAdmin here:
 
 
 
-#Custom domain instructions (IMPORTANT)
+# Custom domain instructions (IMPORTANT)
 
 By default, we establish a CNAME on the elestio.app domain. However, you may prefer to use your own domain. In that case, please follow the steps outlined below.
 
