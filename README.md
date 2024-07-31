@@ -51,5 +51,6 @@ Step4: Run the subsequent command to generate necessary configurations, substitu
 Step5: Finalize the process by bringing the Docker Compose back up:
 
     docker-compose up -d;
+    ./scripts/postInstall.sh
 
 Note: Ensure that these steps are executed in sequence to seamlessly integrate and activate your custom domain with the service.
