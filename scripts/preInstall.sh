@@ -22,6 +22,30 @@ EOT
 mkdir -p ./matrix
 mkdir -p ./synapse
 
+cat /opt/elestio/startPostfix.sh > post.txt
+filename="./post.txt"
+
+SMTP_LOGIN=""
+SMTP_PASSWORD=""
+
+# Read the file line by line
+while IFS= read -r line; do
+  # Extract the values after the flags (-e)
+  values=$(echo "$line" | grep -o '\-e [^ ]*' | sed 's/-e //')
+
+  # Loop through each value and store in respective variables
+  while IFS= read -r value; do
+    if [[ $value == RELAYHOST_USERNAME=* ]]; then
+      SMTP_LOGIN=${value#*=}
+    elif [[ $value == RELAYHOST_PASSWORD=* ]]; then
+      SMTP_PASSWORD=${value#*=}
+    fi
+  done <<< "$values"
+
+done < "$filename"
+
+rm post.txt
+
 
 echo 'vm.overcommit_memory = 1' >> /etc/sysctl.conf && sysctl -p
 
@@ -180,7 +204,6 @@ sso:
 password_config:
    policy:
 ui_auth:
-email:
 push:
 user_directory:
 stats:
@@ -190,6 +213,23 @@ background_updates:
 enable_registration: true
 enable_registration_captcha: false
 enable_registration_without_verification: true
+
+email:
+   smtp_host: "tuesday.mxrouting.net"
+   smtp_port: 25
+   smtp_user: "${SMTP_LOGIN}"
+   smtp_pass: "${SMTP_PASSWORD}"
+   require_transport_security: true
+
+   notif_from: "Element <${SMTP_LOGIN}>"
+
+   email_subjects:
+      appservice_invite: "You have been invited to join a room"
+      appservice_invite_with_inviter: "%(inviter_display_name)s has invited you to join a room"
+
+enable_3pid_changes: true
+account_threepid_delegate:
+   email: "https://${DOMAIN}"
 
 EOT
 
